@@ -1,0 +1,108 @@
+package hw1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static java.lang.System.setProperty;
+
+public class HomePageContentTestSoftAssert {
+
+    private SoftAssert softAssert = new SoftAssert();
+    private String text = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT "
+            + "UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS "
+            + "NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE "
+            + "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+
+    @Test
+    public void simpleTest() {
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        //1 Open test site by URL
+        driver.navigate().to("https://epam.github.io/JDI/index.html");
+
+        //2 Assert Browser title
+        softAssert.assertEquals(driver.getTitle(), "Home Page");
+
+        //3 Perform login
+        driver.findElement(By.cssSelector(".profile-photo")).click();
+        driver.findElement(By.cssSelector("[id = 'Name']")).sendKeys("epam");
+        driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys("1234");
+        driver.findElement(By.cssSelector("[type = 'submit']")).click();
+
+        //4 Assert User name in the left-top side of screen that user is loggined
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".profile-photo > span")).getText(), "PITER CHAILOVSKII");
+
+        //5 Assert Browser title
+        softAssert.assertEquals(driver.getTitle(), "Home Page");
+
+        //6 Assert that there are 4 items on the header section are displayed and they have proper texts
+        List<WebElement> items = driver.findElements(By.cssSelector(".uui-navigation.nav > li"));
+        List<String> headers = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+        softAssert.assertEquals(items.size(), headers.size());
+        for (WebElement item : items) {
+            softAssert.assertTrue(headers.contains(item.getText()));
+            softAssert.assertTrue(item.isDisplayed());
+        }
+
+        //7 Assert that there are 4 images on the Index Page and they are displayed
+        List<WebElement> icons = driver.findElements(By.cssSelector(".benefit-icon"));
+        softAssert.assertEquals(icons.size(), 4);
+        for (WebElement icon : icons) {
+            softAssert.assertTrue(icon.isDisplayed());
+        }
+
+        //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
+        List<WebElement> elements = driver.findElements(By.cssSelector(".benefit-txt"));
+        List<String> texts = Arrays.asList(
+                "To include good practices\n" + "and ideas from successful\n" + "EPAM project",
+                "To be flexible and\n" + "customizable",
+                "To be multiplatform",
+                "Already have good base\n" + "(about 20 internal and\n" + "some external projects),\n"
+                        + "wish to get more…");
+        softAssert.assertEquals(elements.size(), headers.size());
+        for (WebElement element : elements) {
+            softAssert.assertTrue(texts.contains(element.getText()));
+            softAssert.assertTrue(element.isDisplayed());
+        }
+
+        //9 Assert a text of the main header
+        softAssert.assertEquals(driver.findElement(By.cssSelector("h3.main-title")).getText(), "EPAM FRAMEWORK WISHES…");
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), text);
+
+        //10 Assert that there is the iframe in the center of page
+        WebElement iframe = driver.findElement(By.cssSelector("[id='iframe']"));
+        softAssert.assertTrue(iframe.isDisplayed());
+
+        //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
+        iframe.click();
+        softAssert.assertTrue(driver.findElement(By.cssSelector(".epam-logo img")).isDisplayed());
+
+        //12 Switch to original window back
+        driver.switchTo().defaultContent();
+
+        //13 Assert a text of the sub header
+        WebElement href = driver.findElement(By.cssSelector(".text-center > a"));
+        softAssert.assertEquals(href.getText(), "JDI GITHUB");
+
+        //14 Assert that JDI GITHUB is a link and has a proper URL
+        softAssert.assertEquals(href.getAttribute("href"), "https://github.com/epam/JDI");
+
+        //15 Assert that there is Left Section
+        softAssert.assertTrue(driver.findElement(By.cssSelector("[name='navigation-sidebar']")).isDisplayed());
+
+        //16 Assert that there is Footer
+        softAssert.assertTrue(driver.findElement(By.cssSelector("footer")).isDisplayed());
+
+        //17 Close Browser
+        driver.close();
+    }
+}
