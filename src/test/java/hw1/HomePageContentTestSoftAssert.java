@@ -21,7 +21,7 @@ public class HomePageContentTestSoftAssert {
             + "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
     @Test
-    public void simpleTest() {
+    public void homePageContentTestSoftAssert() {
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
