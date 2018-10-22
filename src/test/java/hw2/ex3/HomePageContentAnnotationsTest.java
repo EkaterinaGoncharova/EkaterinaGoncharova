@@ -1,10 +1,10 @@
-package hw1;
+package hw2.ex3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,18 +13,47 @@ import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class HomePageContentTest {
+public class HomePageContentAnnotationsTest {
+
+    private WebDriver driver;
 
     private String text = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT "
             + "UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS "
             + "NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE "
             + "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
+    @BeforeSuite
+    public void beforeSuite() {
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+    }
+
+    @BeforeClass
+    public void beforeClass() {
+        driver = new ChromeDriver();
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+        driver.manage().window().maximize();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println(driver.getTitle());
+    }
+
+    @AfterClass
+    public void afterClass() {
+        driver.close();
+    }
+
+    @AfterSuite
+    public void afterSuite() {
+        System.out.println(System.currentTimeMillis());
+    }
+
     @Test
     public void homePageContentTest() {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
 
         //1 Open test site by URL
         driver.navigate().to("https://epam.github.io/JDI/index.html");
@@ -102,7 +131,5 @@ public class HomePageContentTest {
         //16 Assert that there is Footer
         assertTrue(driver.findElement(By.cssSelector("footer")).isDisplayed());
 
-        //17 Close Browser
-        driver.close();
     }
 }

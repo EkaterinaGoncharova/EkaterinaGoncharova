@@ -43,7 +43,7 @@ public class SimpleTestPageObject extends TestBase {
         homePage.checkTitle(driver);
 
         //4 Login
-        homePage.login("epam", "1234");
+        //homePage.login(PITER_CHAILOVSKII.login, PITER_CHAILOVSKII.password);
 
         //5
         homePage.checkMainText();
