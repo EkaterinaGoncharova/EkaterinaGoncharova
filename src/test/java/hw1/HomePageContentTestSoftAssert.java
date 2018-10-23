@@ -15,6 +15,16 @@ import static java.lang.System.setProperty;
 public class HomePageContentTestSoftAssert {
 
     private SoftAssert softAssert = new SoftAssert();
+
+    private List<String> headers = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+
+    private List<String> texts = Arrays.asList(
+            "To include good practices\n" + "and ideas from successful\n" + "EPAM project",
+            "To be flexible and\n" + "customizable",
+            "To be multiplatform",
+            "Already have good base\n" + "(about 20 internal and\n" + "some external projects),\n"
+                    + "wish to get more…");
+
     private String text = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT "
             + "UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS "
             + "NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE "
@@ -46,7 +56,7 @@ public class HomePageContentTestSoftAssert {
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> items = driver.findElements(By.cssSelector(".uui-navigation.nav > li"));
-        List<String> headers = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+
         softAssert.assertEquals(items.size(), headers.size());
         for (WebElement item : items) {
             softAssert.assertTrue(headers.contains(item.getText()));
@@ -62,12 +72,6 @@ public class HomePageContentTestSoftAssert {
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> elements = driver.findElements(By.cssSelector(".benefit-txt"));
-        List<String> texts = Arrays.asList(
-                "To include good practices\n" + "and ideas from successful\n" + "EPAM project",
-                "To be flexible and\n" + "customizable",
-                "To be multiplatform",
-                "Already have good base\n" + "(about 20 internal and\n" + "some external projects),\n"
-                        + "wish to get more…");
         softAssert.assertEquals(elements.size(), headers.size());
         for (WebElement element : elements) {
             softAssert.assertTrue(texts.contains(element.getText()));
@@ -104,5 +108,7 @@ public class HomePageContentTestSoftAssert {
 
         //17 Close Browser
         driver.close();
+
+        softAssert.assertAll();
     }
 }
