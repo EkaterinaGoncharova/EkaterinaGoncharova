@@ -18,7 +18,6 @@ public class SimpleTestSelenide extends SelenideTestBase {
 
     @Test
     public void simpleTestSelenide () {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
         //2 Navigate
         open("https://epam.github.io/JDI/index.html");
@@ -32,12 +31,10 @@ public class SimpleTestSelenide extends SelenideTestBase {
         $("[id = 'Password']").sendKeys("1234");
         $("[type = 'submit']").click();
 
+        //5 Check main title
         SelenideElement mainTitle = $("h3.main-title");
         mainTitle.shouldBe(visible);
         mainTitle.shouldHave(text("EPAM FRAMEWORK WISHES…"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
-
-        //$$(ByXPath("")).shouldHaveSize(4);
 
     }
 }

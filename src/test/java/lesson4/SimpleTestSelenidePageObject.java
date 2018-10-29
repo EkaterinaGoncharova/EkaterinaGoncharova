@@ -1,49 +1,35 @@
 package lesson4;
 
 import base.SelenideTestBase;
-import com.codeborne.selenide.SelenideElement;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.HomePageSelenide;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static java.lang.System.setProperty;
-import static org.testng.Assert.assertEquals;
+import static enums.Users.PITER_CHAILOVSKII;
 
 public class SimpleTestSelenidePageObject extends SelenideTestBase {
 
     private HomePageSelenide homePageSelenide;
+
     @BeforeClass
     public void beforeClass() {
         homePageSelenide = page(HomePageSelenide.class);
     }
+
     @Test
-    public void simpleTestSelenide () {
-        //setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+    public void simpleTestSelenide() {
 
         //2 Navigate
-        open("https://epam.github.io/JDI/index.html");
+        homePageSelenide.openPage();
 
         //3 Assert Title
-        assertEquals(getWebDriver().getTitle(), "Home Page");
+        homePageSelenide.checkTitle();
 
         //4 Login
-        $(".profile-photo").click();
-        $("[id = 'Name']").sendKeys("epam");
-        $("[id = 'Password']").sendKeys("1234");
-        $("[type = 'submit']").click();
+        homePageSelenide.login(PITER_CHAILOVSKII.login, PITER_CHAILOVSKII.password);
 
-        SelenideElement mainTitle = $("h3.main-title");
-        mainTitle.shouldBe(visible);
-        mainTitle.shouldHave(text("EPAM FRAMEWORK WISHES…"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
-
-        //$$(ByXPath("")).shouldHaveSize(4);
-
+        //5 Check main title
+        homePageSelenide.checkMainText();
     }
 }
