@@ -7,7 +7,6 @@ import enums.Pages;
 import enums.ServiceItems;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;

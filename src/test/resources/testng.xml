@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Test Suite" verbose="1" >
+<suite name="Test Suite" verbose="1">
     <test name="Simple Test">
 
         <groups>
@@ -10,7 +10,7 @@
         </groups>
 
         <classes>
-            <class name="lesson2.SimpleTest" />
+            <class name="lesson2.SimpleTest"/>
         </classes>
 
     </test>

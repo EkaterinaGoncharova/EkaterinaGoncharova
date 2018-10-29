@@ -28,34 +28,34 @@ public class ServicePageInterfaceTest extends SelenideTestBase {
     @Test
     public void servicePageInterfaceCheck() {
 
-        //1	Open test site by URL
+        //1 Open test site by URL
         homePageSelenide.openPage();
 
-        //2	Assert Browser title
+        //2 Assert Browser title
         homePageSelenide.checkTitle();
 
-        //3	Perform login
+        //3 Perform login
         homePageSelenide.login(PITER_CHAILOVSKII.login, PITER_CHAILOVSKII.password);
 
-        //4	Assert User name in the left-top side of screen that user is loggined
+        //4 Assert User name in the left-top side of screen that user is loggined
         homePageSelenide.checkUserName(PITER_CHAILOVSKII.name);
 
-        //5	Click on "Service" subcategory in the header and check that drop down contains options
+        //5 Click on "Service" subcategory in the header and check that drop down contains options
         homePageSelenide.clickHeaderServiceItem();
         homePageSelenide.checkHeaderServiceItems();
 
-        //6	Click on Service subcategory in the left section and check that drop down contains options
+        //6 Click on Service subcategory in the left section and check that drop down contains options
         homePageSelenide.clickLeftSectionServiceItem();
         homePageSelenide.checkLeftSectionServiceItems();
 
-        //7	Open through the header menu Service -> Different Elements Page
+        //7 Open through the header menu Service -> Different Elements Page
         homePageSelenide.clickHeaderServiceItem(DIFFERENT_ELEMENTS);
         serviceDifferentElementsPage.checkTitle();
 
-        //8	Check interface on Different elements page, it contains all needed elements
+        //8 Check interface on Different elements page, it contains all needed elements
         serviceDifferentElementsPage.checkInterface();
 
-        //9	Assert that there is Right Section
+        //9 Assert that there is Right Section
         serviceDifferentElementsPage.checkRightSection();
 
         //10 Assert that there is Left Section

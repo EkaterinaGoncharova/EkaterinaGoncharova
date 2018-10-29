@@ -17,9 +17,7 @@ import static org.testng.Assert.assertEquals;
 public class ServiceDifferentElementsPage {
 
     private final String checkboxLogText = ": condition changed to ";
-
     private final String radioLogText = "metal: value changed to ";
-
     private final String dropdownLogText = "Colors: value changed to ";
 
     @FindBy(css = ".checkbox-row > .label-checkbox")

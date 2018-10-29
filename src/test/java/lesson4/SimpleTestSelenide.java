@@ -2,22 +2,19 @@ package lesson4;
 
 import base.SelenideTestBase;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 
 public class SimpleTestSelenide extends SelenideTestBase {
 
     @Test
-    public void simpleTestSelenide () {
+    public void simpleTestSelenide() {
 
         //2 Navigate
         open("https://epam.github.io/JDI/index.html");

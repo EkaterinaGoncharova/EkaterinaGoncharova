@@ -5,14 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
 public class SimpleTestDataProvider extends TestBase {
-
 
 
     @Test(dataProvider = "simpleDataProvider", dataProviderClass = DataProvider.class)

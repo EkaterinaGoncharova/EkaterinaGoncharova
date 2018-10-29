@@ -26,34 +26,34 @@ public class DatesPageSlidersTest extends SelenideTestBase {
     @Test
     public void dataPageSlidersCheck() {
 
-        //1	Open test site by URL
+        //1 Open test site by URL
         homePageSelenide.openPage();
 
-        //2	Assert Browser title
+        //2 Assert Browser title
         homePageSelenide.checkTitle();
 
-        //3	Perform login
+        //3 Perform login
         homePageSelenide.login(PITER_CHAILOVSKII.login, PITER_CHAILOVSKII.password);
 
-        //4	Assert User name in the left-top side of screen that user is loggined
+        //4 Assert User name in the left-top side of screen that user is loggined
         homePageSelenide.checkUserName(PITER_CHAILOVSKII.name);
 
-        //5	Open through the header menu Service -> Dates Page
+        //5 Open through the header menu Service -> Dates Page
         homePageSelenide.clickHeaderServiceItem(DATES);
         serviceDatesPage.checkTitle();
 
-        //6	Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
+        //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         serviceDatesPage.moveLeftSliderTo(0);
         serviceDatesPage.moveRightSliderTo(100);
 
-        //7	Assert that for "From" and "To" sliders there are logs rows with corresponding values
+        //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         serviceDatesPage.checkLogAboutSliders(TO, 100, FROM, 0);
 
-        //8	Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
+        //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
         serviceDatesPage.moveLeftSliderTo(0);
         serviceDatesPage.moveRightSliderTo(0);
 
-        //9	Assert that for "From" and "To" sliders there are logs rows with corresponding values
+        //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         serviceDatesPage.checkLogAboutSliders(TO, 0, FROM, 0);
 
         //10 Using drag-and-drop set Range sliders. left sliders - the most right position, right slider - the most right position.
