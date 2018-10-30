@@ -5,20 +5,20 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.Checkboxes;
 import enums.DropdownItems;
-import enums.Pages;
 import enums.Radios;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static enums.Pages.DIFFERENT_ELEMENTS;
 import static org.testng.Assert.assertEquals;
 
-public class ServiceDifferentElementsPage {
+public class DifferentElementsPage {
 
-    private final String checkboxLogText = ": condition changed to ";
-    private final String radioLogText = "metal: value changed to ";
-    private final String dropdownLogText = "Colors: value changed to ";
+    private final String checkboxLog = ": condition changed to ";
+    private final String radioLog = "metal: value changed to ";
+    private final String dropdownLog = "Colors: value changed to ";
 
     @FindBy(css = ".checkbox-row > .label-checkbox")
     private ElementsCollection checkboxes;
@@ -41,21 +41,22 @@ public class ServiceDifferentElementsPage {
     @FindBy(css = "#mCSB_2")
     private SelenideElement rightSection;
 
-    @FindBy(css = "[name='navigation-sidebar']")
-    private SelenideElement leftSection;
-
     @FindBy(css = ".panel-body-list > li")
-    private ElementsCollection logPanel;
+    private ElementsCollection logSection;
 
 
     //================================methods===================================
 
-    public void clickCheckbox(Checkboxes checkbox) {
-        checkboxes.find(text(checkbox.displayName)).click();
+    public void clickCheckboxes(Checkboxes... checkboxes) {
+        for (Checkboxes checkbox : checkboxes) {
+            this.checkboxes.find(text(checkbox.displayName)).click();
+        }
     }
 
-    public void clickRadio(Radios radio) {
-        radios.find(text(radio.displayName)).click();
+    public void clickRadio(Radios... radios) {
+        for (Radios radio : radios) {
+            this.radios.find(text(radio.displayName)).click();
+        }
     }
 
     public void clickDropdownItem(DropdownItems item) {
@@ -66,7 +67,7 @@ public class ServiceDifferentElementsPage {
     //================================checks===================================
 
     public void checkTitle() {
-        assertEquals(getWebDriver().getTitle(), Pages.SERVICE_DEFFERENT_ELEMENTS.title);
+        assertEquals(getWebDriver().getTitle(), DIFFERENT_ELEMENTS.title);
     }
 
     public void checkInterface() {
@@ -87,20 +88,16 @@ public class ServiceDifferentElementsPage {
         rightSection.shouldBe(visible);
     }
 
-    public void checkLeftSection() {
-        leftSection.shouldBe(visible);
+    public void checkCheckboxesLog(Checkboxes checkbox1, Checkboxes checkbox2, boolean isChecked) {
+        logSection.findBy(text(checkbox1.displayName + checkboxLog + String.valueOf(isChecked))).shouldBe(visible);
+        logSection.findBy(text(checkbox2.displayName + checkboxLog + String.valueOf(isChecked))).shouldBe(visible);
     }
 
-    public void checkLogAboutCheckboxes(Checkboxes checkbox1, Checkboxes checkbox2, boolean isChecked) {
-        logPanel.get(0).shouldHave(text(checkbox1.displayName + checkboxLogText + String.valueOf(isChecked)));
-        logPanel.get(1).shouldHave(text(checkbox2.displayName + checkboxLogText + String.valueOf(isChecked)));
+    public void checkRadioLog(Radios radio) {
+        logSection.findBy(text(radioLog + radio.displayName)).shouldBe(visible);
     }
 
-    public void checkLogAboutRadio(Radios radio) {
-        logPanel.get(0).shouldHave(text(radioLogText + radio.displayName));
-    }
-
-    public void checkLogAboutDropdownItem(DropdownItems item) {
-        logPanel.get(0).shouldHave(text(dropdownLogText + item.displayName));
+    public void checkDropdownLog(DropdownItems item) {
+        logSection.findBy(text(dropdownLog + item.displayName)).shouldBe(visible);
     }
 }
