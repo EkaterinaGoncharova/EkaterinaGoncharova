@@ -45,7 +45,10 @@ public class DatesPage {
         int sliderWidth = slider.getSize().getWidth();
         SelenideElement fromSlider = sliders.get(0);
         Actions action = new Actions(getWebDriver());
-        int xOffset = position - Integer.valueOf(fromSlider.getText()) - 1;
+        int xOffset = position - Integer.valueOf(fromSlider.getText());
+        if (xOffset <= 0) {
+            xOffset--;
+        }
         action.dragAndDropBy(fromSlider, xOffset * sliderWidth / 100, 0).perform();
     }
 
@@ -53,7 +56,10 @@ public class DatesPage {
         int sliderWidth = slider.getSize().getWidth();
         SelenideElement toSlider = sliders.get(1);
         Actions action = new Actions(getWebDriver());
-        int xOffset = position - Integer.valueOf(toSlider.getText()) - 1;
+        int xOffset = position - Integer.valueOf(toSlider.getText());
+        if (xOffset <= 0) {
+            xOffset--;
+        }
         action.dragAndDropBy(toSlider, xOffset * sliderWidth / 100, 0).perform();
     }
 
