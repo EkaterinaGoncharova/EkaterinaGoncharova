@@ -1,4 +1,4 @@
-package hw4;
+package hw5;
 
 import base.SelenideTestBase;
 import io.qameta.allure.Feature;
@@ -13,17 +13,16 @@ import pageObjects.base.Header;
 import pageObjects.base.LeftSection;
 
 import static com.codeborne.selenide.Selenide.page;
-import static enums.Checkboxes.WATER;
-import static enums.Checkboxes.WIND;
+import static enums.Checkboxes.*;
 import static enums.DropdownItems.YELLOW;
 import static enums.Radios.SELEN;
 import static enums.ServiceItems.DIFFERENT_ELEMENTS;
 import static enums.Users.PITER_CHAILOVSKII;
 
 @Feature("Service tests")
-@Story("Different Elements Page Testing")
+@Story("Different Elements Page Failure Testing")
 @Listeners(AllureAttachmentListener.class)
-public class ServicePageInterfaceTest extends SelenideTestBase {
+public class ServicePageInterfaceFailedTest extends SelenideTestBase {
 
     private HomePageSelenide homePage;
     private Header header;
@@ -96,6 +95,7 @@ public class ServicePageInterfaceTest extends SelenideTestBase {
         differentElementsPage.clickCheckboxes(WATER, WIND);
 
         //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        differentElementsPage.checkCheckboxesLog(WIND, WATER, false);
+        //Step is failed, changed WATER to EARTH
+        differentElementsPage.checkCheckboxesLog(WIND, EARTH, false);
     }
 }

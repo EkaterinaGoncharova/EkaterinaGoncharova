@@ -46,10 +46,12 @@ public class Header {
         submit.click();
     }
 
+    @Step
     public void clickService() {
         headerServiceItem.click();
     }
 
+    @Step
     public void selectServiceItem(ServiceItems item) {
         headerServiceItem.click();
         headerServiceItems.find(text(item.displayNameUpperCase)).click();
@@ -57,10 +59,12 @@ public class Header {
 
     //================================checks===================================
 
+    @Step
     public void checkUserName(Users user) {
         assertEquals(userName.getText(), user.name);
     }
 
+    @Step
     public void checkServiceItems() {
         List<String> itemTexts = ServiceItems.toUpperCaseList();
         headerServiceItems.shouldHaveSize(itemTexts.size());

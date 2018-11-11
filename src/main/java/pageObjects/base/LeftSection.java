@@ -3,6 +3,7 @@ package pageObjects.base;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.ServiceItems;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -23,16 +24,19 @@ public class LeftSection {
 
     //================================methods===================================
 
+    @Step
     public void clickService() {
         service.click();
     }
 
     //================================checks===================================
 
+    @Step
     public void checkLeftSection() {
         leftSection.shouldBe(visible);
     }
 
+    @Step
     public void checkServiceItems() {
         List<String> itemTexts = ServiceItems.toList();
         serviceItems.shouldHaveSize(itemTexts.size());

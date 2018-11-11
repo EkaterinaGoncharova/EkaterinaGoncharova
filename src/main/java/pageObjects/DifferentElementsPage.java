@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import enums.Checkboxes;
 import enums.DropdownItems;
 import enums.Radios;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
@@ -47,18 +48,21 @@ public class DifferentElementsPage {
 
     //================================methods===================================
 
+    @Step
     public void clickCheckboxes(Checkboxes... checkboxes) {
         for (Checkboxes checkbox : checkboxes) {
             this.checkboxes.find(text(checkbox.displayName)).click();
         }
     }
 
+    @Step
     public void clickRadio(Radios... radios) {
         for (Radios radio : radios) {
             this.radios.find(text(radio.displayName)).click();
         }
     }
 
+    @Step
     public void clickDropdownItem(DropdownItems item) {
         dropdown.click();
         dropdownItems.find(text(item.displayName)).click();
@@ -66,10 +70,12 @@ public class DifferentElementsPage {
 
     //================================checks===================================
 
+    @Step
     public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), DIFFERENT_ELEMENTS.title);
     }
 
+    @Step
     public void checkInterface() {
         checkboxes.shouldHaveSize(4);
         for (SelenideElement checkbox : checkboxes) {
@@ -84,19 +90,23 @@ public class DifferentElementsPage {
         button.shouldBe(visible);
     }
 
+    @Step
     public void checkRightSection() {
         rightSection.shouldBe(visible);
     }
 
+    @Step
     public void checkCheckboxesLog(Checkboxes checkbox1, Checkboxes checkbox2, boolean isChecked) {
         logSection.findBy(text(checkbox1.displayName + checkboxLog + String.valueOf(isChecked))).shouldBe(visible);
         logSection.findBy(text(checkbox2.displayName + checkboxLog + String.valueOf(isChecked))).shouldBe(visible);
     }
 
+    @Step
     public void checkRadioLog(Radios radio) {
         logSection.findBy(text(radioLog + radio.displayName)).shouldBe(visible);
     }
 
+    @Step
     public void checkDropdownLog(DropdownItems item) {
         logSection.findBy(text(dropdownLog + item.displayName)).shouldBe(visible);
     }

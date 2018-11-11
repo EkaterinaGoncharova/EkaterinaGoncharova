@@ -1,11 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Test Suite" verbose="1">
-    <test name="Simple Test">
+<suite name="Test Suite" parallel="methods" thread-count="3">
+    <test name="Service Tests">
 
-        <classes>
-            <class name="lesson4.SimpleTestSelenidePageObject"/>
-        </classes>
+        <packages>
+            <package name="hw4"/>
+            <package name="hw5"/>
+        </packages>
 
     </test>
 </suite>

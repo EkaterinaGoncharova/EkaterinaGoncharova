@@ -2,6 +2,10 @@ package lesson4;
 
 import base.SelenideTestBase;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -11,6 +15,9 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
+@Feature("Smoke  tests")
+@Story("Home Page Testing")
+@Listeners(AllureAttachmentListener.class)
 public class SimpleTestSelenide extends SelenideTestBase {
 
     @Test

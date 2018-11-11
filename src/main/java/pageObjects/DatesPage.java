@@ -2,6 +2,7 @@ package pageObjects;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -29,6 +30,7 @@ public class DatesPage {
 
     //================================methods===================================
 
+    @Step
     public void moveSlidersTo(int fromPosition, int toPosition) {
         SelenideElement toSlider = sliders.get(1);
         int toSliderCurrentPosition = Integer.valueOf(toSlider.getText());
@@ -65,10 +67,12 @@ public class DatesPage {
 
     //================================checks===================================
 
+    @Step
     public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), DATES.title);
     }
 
+    @Step
     public void checkSlidersLog(int fromSlider, int toSlider) {
         logSection.findBy(text(fromSliderLogBegin + (String.valueOf(fromSlider)) + slidersLogEnd)).shouldBe(visible);
         logSection.findBy(text(toSliderLogBegin + (String.valueOf(toSlider)) + slidersLogEnd)).shouldBe(visible);
