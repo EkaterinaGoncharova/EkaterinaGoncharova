@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 
 public class HomePageSelenide {
 
-    private final String MAIN_TEXT = "EPAM FRAMEWORK WISHES…";
+    private final String MAIN_TEXT = "EPA FRAMEWORK WISHES…";
 
     @FindBy(css = "h3.main-title")
     private SelenideElement mainText;
