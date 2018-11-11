@@ -1,4 +1,5 @@
 .idea
+.allure
 *.class
 *.iml
 *.jar

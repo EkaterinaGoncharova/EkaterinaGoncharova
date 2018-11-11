@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.ServiceItems;
 import enums.Users;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class Header {
 
     //================================methods===================================
 
+    @Step
     public void login(Users user) {
         profileButton.click();
         login.sendKeys(user.login);

@@ -3,14 +3,8 @@
 <suite name="Test Suite" verbose="1">
     <test name="Simple Test">
 
-        <groups>
-            <run>
-                <include name="Group1"></include>
-            </run>
-        </groups>
-
         <classes>
-            <class name="lesson2.SimpleTest"/>
+            <class name="lesson4.SimpleTestSelenidePageObject"/>
         </classes>
 
     </test>
