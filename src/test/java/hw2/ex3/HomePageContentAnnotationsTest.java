@@ -33,7 +33,7 @@ public class HomePageContentAnnotationsTest {
 
     @BeforeSuite
     public void beforeSuite() {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\driver\\chromedriver.exe");
     }
 
     @BeforeClass

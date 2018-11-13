@@ -41,7 +41,7 @@ public class Header {
     @Step
     public void login(Users user) {
         profileButton.click();
-        login.sendKeys(user.login);
+        login.sendKeys(user.name);
         password.sendKeys(user.password);
         submit.click();
     }
@@ -61,7 +61,7 @@ public class Header {
 
     @Step
     public void checkUserName(Users user) {
-        assertEquals(userName.getText(), user.name);
+        assertEquals(userName.getText(), user.displayName);
     }
 
     @Step

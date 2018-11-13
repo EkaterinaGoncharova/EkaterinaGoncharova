@@ -46,7 +46,7 @@ public class SimpleTestPageObject extends TestBase {
         homePage.checkTitle(driver);
 
         //4 Login
-        homePage.login(PITER_CHAILOVSKII.login, PITER_CHAILOVSKII.password);
+        homePage.login(PITER_CHAILOVSKII.name, PITER_CHAILOVSKII.password);
 
         //5
         homePage.checkMainText();

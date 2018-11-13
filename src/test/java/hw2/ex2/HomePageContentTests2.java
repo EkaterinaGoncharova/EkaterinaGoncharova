@@ -31,7 +31,7 @@ public class HomePageContentTests2 {
 
     @Test(groups = "Regression")
     public void homePageContentTest1() {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\driver\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 

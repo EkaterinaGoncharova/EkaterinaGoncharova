@@ -4,13 +4,13 @@ public enum Users {
 
     PITER_CHAILOVSKII("epam", "1234", "PITER CHAILOVSKII");
 
-    public String login;
-    public String password;
     public String name;
+    public String password;
+    public String displayName;
 
-    Users(String login, String password, String name) {
-        this.login = login;
-        this.password = password;
+    Users(String name, String password, String displayName) {
         this.name = name;
+        this.password = password;
+        this.displayName = displayName;
     }
 }

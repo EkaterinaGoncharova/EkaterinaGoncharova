@@ -43,10 +43,10 @@ public class HomePageContentPageObjectTest extends TestBase {
         homePage.checkTitle(driver);
 
         //3 Perform login
-        homePage.login(PITER_CHAILOVSKII.login, PITER_CHAILOVSKII.password);
+        homePage.login(PITER_CHAILOVSKII.name, PITER_CHAILOVSKII.password);
 
         //4 Assert User name in the left-top side of screen that user is loggined
-        homePage.checkUserName(PITER_CHAILOVSKII.name);
+        homePage.checkUserName(PITER_CHAILOVSKII.displayName);
 
         //5 Assert Browser title
         homePage.checkTitle(driver);

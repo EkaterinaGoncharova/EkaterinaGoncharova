@@ -2,10 +2,15 @@ package pageObjects;
 
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebDriver;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
 public class HomePageSelenideCucumber {
@@ -22,8 +27,8 @@ public class HomePageSelenideCucumber {
     @FindBy(css = "[type = 'submit']")
     private SelenideElement submit;
 
-    @FindBy(css = "")
-    private SelenideElement mainText;
+    @FindBy(css = "h3.main-title")
+    private SelenideElement mainTitle;
 
     public HomePageSelenideCucumber() {
         page(this);
@@ -31,10 +36,14 @@ public class HomePageSelenideCucumber {
 
     //================================methods===================================
 
-    public void open(WebDriver driver) {
-        driver.get("");
+    @Step("Open JDI Test Application - Home Page")
+    @When("I'm on the Home Page")
+    public void openPage() {
+        open("https://epam.github.io/JDI/index.html");
     }
 
+    @Step
+    @When("I login as user (.+) with password (.+)")
     public void login(String name, String passwd) {
         profileButton.click();
         login.sendKeys(name);
@@ -44,11 +53,15 @@ public class HomePageSelenideCucumber {
 
     //================================checks===================================
 
-    public void checkTitle(WebDriver driver) {
-        assertEquals(driver, "");
+    @Step
+    @Then("The browser title is Home Page$")
+    public void checkTitle() {
+        assertEquals(getWebDriver().getTitle(), "Home Page");
     }
 
-    public void checkMainText() {
-        assertEquals(mainText.getText(), "");
+    @Step
+    @Then("The user icon is displayed on the header")
+    public void checkUserIcon() {
+        profileButton.shouldBe(visible);
     }
 }

@@ -15,7 +15,7 @@ public class SimpleTest {
 
     @Test
     public void simpleTest() {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\driver\\chromedriver.exe");
 
         //1 Open BR
         WebDriver driver = new ChromeDriver();
