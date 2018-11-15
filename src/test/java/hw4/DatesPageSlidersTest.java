@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.DatesPage;
-import pageObjects.HomePageSelenide;
+import pageObjects.HomePage;
 import pageObjects.base.Header;
 
 import static com.codeborne.selenide.Selenide.page;
@@ -20,13 +20,13 @@ import static enums.Users.PITER_CHAILOVSKII;
 @Listeners(AllureAttachmentListener.class)
 public class DatesPageSlidersTest extends SelenideTestBase {
 
-    private HomePageSelenide homePage;
+    private HomePage homePage;
     private Header header;
     private DatesPage datesPage;
 
     @BeforeClass
     public void beforeClass() {
-        homePage = page(HomePageSelenide.class);
+        homePage = page(HomePage.class);
         header = page(Header.class);
         datesPage = page(DatesPage.class);
     }

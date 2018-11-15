@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPage;
-import pageObjects.HomePageSelenide;
+import pageObjects.HomePage;
 import pageObjects.base.Header;
 import pageObjects.base.LeftSection;
 
@@ -25,14 +25,14 @@ import static enums.Users.PITER_CHAILOVSKII;
 @Listeners(AllureAttachmentListener.class)
 public class ServicePageInterfaceTest extends SelenideTestBase {
 
-    private HomePageSelenide homePage;
+    private HomePage homePage;
     private Header header;
     private LeftSection leftSection;
     private DifferentElementsPage differentElementsPage;
 
     @BeforeClass
     public void beforeClass() {
-        homePage = page(HomePageSelenide.class);
+        homePage = page(HomePage.class);
         header = page(Header.class);
         leftSection = page(LeftSection.class);
         differentElementsPage = page(DifferentElementsPage.class);

@@ -13,4 +13,13 @@ public enum Users {
         this.password = password;
         this.displayName = displayName;
     }
+
+    public static Users toUser(String userStr) {
+        for (Users user : Users.values()) {
+            if (user.displayName.equals(userStr.toUpperCase())) {
+                return user;
+            }
+        }
+        throw new IllegalArgumentException("User was not found");
+    }
 }

@@ -8,19 +8,19 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.HomePageSelenium;
 
 import static enums.Users.PITER_CHAILOVSKII;
 
 public class HomePageContentPageObjectTest extends TestBase {
 
     private WebDriver driver;
-    private HomePage homePage;
+    private HomePageSelenium homePage;
 
     @BeforeClass
     public void beforeClass() {
         driver = new ChromeDriver();
-        homePage = PageFactory.initElements(driver, HomePage.class);
+        homePage = PageFactory.initElements(driver, HomePageSelenium.class);
     }
 
     @BeforeMethod

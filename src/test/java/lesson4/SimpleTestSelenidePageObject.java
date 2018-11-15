@@ -3,7 +3,7 @@ package lesson4;
 import base.SelenideTestBase;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.HomePageSelenide;
+import pageObjects.HomePage;
 import pageObjects.base.Header;
 
 import static com.codeborne.selenide.Selenide.page;
@@ -11,12 +11,12 @@ import static enums.Users.PITER_CHAILOVSKII;
 
 public class SimpleTestSelenidePageObject extends SelenideTestBase {
 
-    private HomePageSelenide homePage;
+    private HomePage homePage;
     private Header header;
 
     @BeforeClass(alwaysRun = true)
     public void beforeClass() {
-        homePage = page(HomePageSelenide.class);
+        homePage = page(HomePage.class);
         header = page(Header.class);
     }
 
